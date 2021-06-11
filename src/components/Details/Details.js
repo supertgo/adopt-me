@@ -1,7 +1,8 @@
 import { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Carousel from "../Carousel/Carousel";
-import ErrorBoundary from "../../../ErrorBoundary";
+import ErrorBoundary from "../../ErrorBoundary";
+import ThemeContext from "../../ThemeContext";
 
 class Details extends Component {
   state = { loading: true };
@@ -41,7 +42,13 @@ class Details extends Component {
         <div>
           <h1>{name}</h1>
           <h2>{`${animal} - ${breed} - ${city}, ${state}`}</h2>
-          <button>Adopt {name}</button>
+          <ThemeContext.Consumer>
+            {(themeHook) => (
+              <button style={{ backgroundColor: themeHook[0] }}>
+                Adopt {name}
+              </button>
+            )}
+          </ThemeContext.Consumer>
           <p>{description}</p>
         </div>
       </div>
@@ -51,10 +58,10 @@ class Details extends Component {
 
 const DetailsWithRouter = withRouter(Details);
 
-export default function detailsWithErrorBoundary() {
+export default function detailsWithErrorBoundary(props) {
   return (
     <ErrorBoundary>
-      <DetailsWithRouter />
+      <DetailsWithRouter {...props} />
     </ErrorBoundary>
   );
 }
