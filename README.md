@@ -3,7 +3,7 @@
 Proejeto desenvolvido durante o curso de introdução ao React na plataforma FrontEndMasters, com o objetivo de criar uma aplicação para adotar animais
 
 <p align="center">
-  <img src="/demo/to-do.gif" />
+  <img src="/demo/demo.gif" />
 </p>
 
 ## Build With
